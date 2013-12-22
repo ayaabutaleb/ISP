@@ -39,6 +39,7 @@ public class MainFrame extends JFrame {
 	private JTextField NewCustTFzip;
 	private JTextField NewCustTFcounty;
 	private JTextField NewCustTFdiscount;
+	public ArrayList<String> CustList = new ArrayList<String>();
 
 	/**
 	 * Launch the application.
@@ -194,8 +195,25 @@ public class MainFrame extends JFrame {
 			}
 		});
 		
+		
 		JButton btnCreateCustomer = new JButton("Create");
 		NewCustomer.add(btnCreateCustomer, "cell 3 7,alignx right");
+		btnCreateCustomer.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				CustList.add(NewCustTFforename.getText());
+				CustList.add(NewCustTFsurname.getText());
+				CustList.add(NewCustTFid.getText());
+				CustList.add(NewCustTFemail.getText());
+				CustList.add(NewCustTFcounty.getText());
+				CustList.add(NewCustTFadress.getText());
+				CustList.add(NewCustTFzip.getText());
+				
+			}
+		});
+		
+		
 		
 		JPanel NewVehicle = new JPanel();
 		tabbedPane.addTab("New Vehicle", null, NewVehicle, null);
