@@ -34,6 +34,7 @@ public class MainFrame extends JFrame {
 	private JTextField NewCustTFadress;
 	private JTextField NewCustTFzip;
 	private JTextField NewCustTFcounty;
+	private JTextField NewCustTFdiscount;
 
 	/**
 	 * Launch the application.
@@ -95,7 +96,7 @@ public class MainFrame extends JFrame {
 		
 		JPanel NewCustomer = new JPanel();
 		tabbedPane.addTab("New Customer", null, NewCustomer, null);
-		NewCustomer.setLayout(new MigLayout("", "[][164.00][182.00][152.00,left]", "[][][][50.00][50.00][][]"));
+		NewCustomer.setLayout(new MigLayout("", "[][164.00,grow][182.00][152.00,left]", "[][][][50.00][][50.00][][]"));
 		
 		JLabel NewCustlabelforename = new JLabel("Forename*");
 		NewCustomer.add(NewCustlabelforename, "cell 0 0,alignx trailing");
@@ -152,29 +153,30 @@ public class MainFrame extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		NewCustomer.add(scrollPane, "cell 3 3,grow");
 		
-		ArrayList<String> list = new ArrayList<String>();	
-		list.add("B");
-		list.add("BE");
-		list.add("C");
-		list.add("D");
-		list.add("DE");
+		ArrayList<String> licencelist = new ArrayList<String>();	
+		licencelist.add("B");
+		licencelist.add("BE");
+		licencelist.add("C");
+		licencelist.add("D");
+		licencelist.add("DE");
 		
-		JList<Object> licenceList = new JList<Object>(list.toArray());
+		JList<Object> licenceList = new JList<Object>(licencelist.toArray());
 		licenceList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		scrollPane.setViewportView(licenceList);
 		
 		JLabel NewCustlabelDiscount = new JLabel("Discount");
-		NewCustomer.add(NewCustlabelDiscount, "cell 0 4,aligny top");
+		NewCustomer.add(NewCustlabelDiscount, "cell 0 4,alignx trailing");
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		NewCustomer.add(scrollPane_1, "cell 1 4,grow");
+		NewCustTFdiscount = new JTextField();
+		NewCustTFdiscount.setText("0.0");
+		NewCustomer.add(NewCustTFdiscount, "cell 1 4,growx");
+		NewCustTFdiscount.setColumns(10);
 		
-		JList<Object> discountList = new JList<Object>();
-		discountList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		scrollPane_1.setViewportView(discountList);
+		
+		
 		
 		JButton NCbtnClear = new JButton("Clear");			
-		NewCustomer.add(NCbtnClear, "flowx,cell 3 6,alignx right");
+		NewCustomer.add(NCbtnClear, "flowx,cell 3 7,alignx right");
 		NCbtnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				NewCustTFforename.setText(null);	
@@ -184,11 +186,16 @@ public class MainFrame extends JFrame {
 				NewCustTFcounty.setText(null);
 				NewCustTFadress.setText(null);
 				NewCustTFzip.setText(null);
+				NewCustTFdiscount.setText("0.0");
 			}
 		});
 		
 		JButton btnCreateCustomer = new JButton("Create");
-		NewCustomer.add(btnCreateCustomer, "cell 3 6,alignx right");
+		NewCustomer.add(btnCreateCustomer, "cell 3 7,alignx right");
+		
+		JPanel NewVehicle = new JPanel();
+		tabbedPane.addTab("New Vehicle", null, NewVehicle, null);
+		NewVehicle.setLayout(new MigLayout("", "[]", "[]"));
 	}
 
 }
