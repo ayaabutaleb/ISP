@@ -26,6 +26,10 @@ import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField NewCustTFforename;
 	private JTextField NewCustTFsurname;
